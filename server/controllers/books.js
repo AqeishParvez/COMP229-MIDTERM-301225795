@@ -44,22 +44,53 @@ export function processAddPage(req, res, next) {
 // GET the Book Details page in order to edit an existing Book
 export function displayEditPage(req, res, next) {
 
-    /*****************
-     * ADD CODE HERE *
-     *****************/
+    let id = req.params.id;
+
+    booksModel.findById(id, function(error, book){
+        if(error){
+            console.error(error);
+            res.end(error);
+        }
+
+        res.render('index', {title: 'Edit Book', page: 'books/edit', book})
+    })
 
 }
 
 // POST - process the information passed from the details form and update the document
 export function processEditPage(req, res, next) {
-    /*****************
-    * ADD CODE HERE *
-    *****************/
+    let id = req.params.id;
+
+    let newBook = booksModel({
+        "_id": req.body.id,
+        name: req.body.name,
+        author: req.body.author,
+        published: req.body.published,
+        description: req.body.description,
+        price: req.body.price,
+    });
+
+    booksModel.updateOne({_id: id}, newBook, function(error){
+        if(error){
+            console.error(error);
+            res.end(error);
+        }
+
+        res.redirect('/books');
+
+    })
 }
 
 // GET - process the delete by user id
 export function processDelete(req, res, next) {
-    /*****************
-  * ADD CODE HERE *
-  *****************/
+    let id = req.params.id;
+
+    booksModel.remove({_id: id}, function(error){
+        if(error){
+            console.error(error);
+            res.end(error);
+        }
+
+        res.redirect('/books');
+    })
 }

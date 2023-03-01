@@ -7,6 +7,7 @@ const router = Router();
 
 /* GET books List page. READ */
 router.get('/books/list', displayBookList);
+router.get('/books', displayBookList);
 
 //  GET the Book Details page in order to add a new Book
 router.get('/books/add', displayAddPage);
