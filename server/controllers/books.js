@@ -91,6 +91,6 @@ export function processDelete(req, res, next) {
             res.end(error);
         }
 
-        res.redirect('/books');
+        res.redirect('/books/list');
     })
 }

@@ -1,3 +1,4 @@
+//File Name: app.js, Student Name: Aqeish Parvez, Student ID: 301225795, Web App Name: COMP229-MIDTERM-301225795
 //IIFE
 (function()
 {
